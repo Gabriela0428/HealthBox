@@ -6,464 +6,155 @@
     <meta name="theme-color" content="#2e7d6f">
     <link rel="manifest" href="manifest.json">
     <link rel="icon" href="healthbox-logo.jpeg" type="image/jpeg">
-<link rel="apple-touch-icon" href="healthbox-logo.jpeg">
+    <link rel="apple-touch-icon" href="healthbox-logo.jpeg">
     <title>HealthBox</title>
     <style>
-        * {
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background: #f4f8f7;
-            color: #263b38;
-        }
-
-        header {
-            background: #ffffff;
-            color: #263b38;
-            text-align: center;
-            padding: 22px 15px;
-            border-bottom: 1px solid #e1ebe8;
-        }
-
-        .logo-img {
-            width: 130px;
-            height: 130px;
-            object-fit: contain;
-            border-radius: 20px;
-            margin-bottom: 8px;
-        }
-
-        header h1 {
-            color: #2e7d6f;
-            font-size: 28px;
-            margin-bottom: 4px;
-        }
-
-        header p {
-            color: #687570;
-            font-size: 14px;
-        }
-
-        .wrap {
-            max-width: 700px;
-            margin: auto;
-            padding: 18px;
-        }
-
-        .notice {
-            background: #fff8df;
-            border-left: 5px solid #e2b93b;
-            line-height: 1.5;
-            font-size: 14px;
-            padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-
-        .card {
-            border: 1px solid #e1ebe8;
-            background: #fff;
-            border-radius: 16px;
-            padding: 20px 10px;
-            min-height: 120px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-            color: #263b38;
-            cursor: pointer;
-            text-align: center;
-            transition: transform 0.1s ease;
-        }
-
-        .card:active {
-            transform: scale(0.98);
-        }
-
-        .icon {
-            font-size: 36px;
-            margin-bottom: 8px;
-        }
-
-        .card p {
-            font-size: 13px;
-            color: #687570;
-            margin-top: 5px;
-        }
-
-        .screen {
-            display: none;
-        }
-
-        .screen.active {
-            display: block;
-        }
-
-        .box {
-            background: #fff;
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-        }
-
-        .back {
-            border: 0;
-            border-radius: 10px;
-            padding: 10px 16px;
-            background: #eef6f3;
-            color: #2e7d6f;
-            font-size: 15px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-bottom: 15px;
-        }
-
-        h2 {
-            color: #2e7d6f;
-            margin-bottom: 12px;
-        }
-
-        h3 {
-            margin: 16px 0 8px;
-            color: #376f63;
-        }
-
-        p, li {
-            line-height: 1.6;
-            font-size: 15px;
-        }
-
-        ul {
-            padding-left: 22px;
-        }
-
-        .warning {
-            background: #fff0f0;
-            border-left: 5px solid #d9534f;
-            padding: 13px;
-            border-radius: 9px;
-            margin-top: 15px;
-        }
-
-        label {
-            display: block;
-            margin-top: 12px;
-            font-weight: bold;
-        }
-
-        input, select {
-            width: 100%;
-            padding: 12px;
-            margin: 7px 0 12px;
-            border: 1px solid #ccd8d5;
-            border-radius: 9px;
-            font-size: 16px;
-        }
-
-        .save {
-            border: 0;
-            border-radius: 10px;
-            padding: 12px 16px;
-            background: #2e7d6f;
-            color: #fff;
-            font-size: 16px;
-            width: 100%;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .record {
-            background: #eef6f3;
-            padding: 12px;
-            border-radius: 9px;
-            margin-top: 10px;
-        }
-
-        .delete {
-            margin-top: 8px;
-            border: 0;
-            background: #ffeded;
-            color: #d9534f;
-            padding: 6px 12px;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-
-        footer {
-            text-align: center;
-            padding: 25px;
-            color: #71807c;
-            font-size: 13px;
-        }
-
-        @media(max-width: 480px) {
-            .grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
+        * { box-sizing: border-box; font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        body { background: #f4f8f7; color: #263b38; }
+        header { background: #ffffff; color: #263b38; text-align: center; padding: 22px 15px; border-bottom: 1px solid #e1ebe8; }
+        .logo-img { width: 130px; height: 130px; object-fit: contain; border-radius: 20px; margin-bottom: 8px; }
+        header h1 { color: #2e7d6f; font-size: 28px; margin-bottom: 4px; }
+        header p { color: #687570; font-size: 14px; }
+        .wrap { max-width: 700px; margin: auto; padding: 18px; }
+        .notice { background: #fff8df; border-left: 5px solid #e2b93b; line-height: 1.5; font-size: 14px; padding: 15px; border-radius: 12px; margin-bottom: 20px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .card { border: 1px solid #e1ebe8; background: #fff; border-radius: 16px; padding: 20px 10px; min-height: 120px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); color: #263b38; cursor: pointer; text-align: center; }
+        .icon { font-size: 36px; margin-bottom: 8px; }
+        .card p { font-size: 13px; color: #687570; margin-top: 5px; }
+        .screen { display: none; }
+        .screen.active { display: block; }
+        .box { background: #fff; border-radius: 15px; padding: 20px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); }
+        .back { border: 0; border-radius: 10px; padding: 10px 16px; background: #eef6f3; color: #2e7d6f; font-size: 15px; font-weight: bold; cursor: pointer; margin-bottom: 15px; }
+        h2 { color: #2e7d6f; margin-bottom: 12px; }
+        h3 { margin: 16px 0 8px; color: #376f63; }
+        p, li { line-height: 1.6; font-size: 15px; }
+        ul { padding-left: 22px; }
+        .warning { background: #fff0f0; border-left: 5px solid #d9534f; padding: 13px; border-radius: 9px; margin-top: 15px; }
+        label { display: block; margin-top: 12px; font-weight: bold; }
+        input, select { width: 100%; padding: 12px; margin: 7px 0 12px; border: 1px solid #ccd8d5; border-radius: 9px; font-size: 16px; }
+        .save { border: 0; border-radius: 10px; padding: 12px 16px; background: #2e7d6f; color: #fff; font-size: 16px; width: 100%; cursor: pointer; font-weight: bold; }
+        .record { background: #eef6f3; padding: 12px; border-radius: 9px; margin-top: 10px; }
+        .delete { margin-top: 8px; border: 0; background: #ffeded; color: #d9534f; padding: 6px 12px; border-radius: 6px; cursor: pointer; }
+        footer { text-align: center; padding: 25px; color: #71807c; font-size: 13px; }
     </style>
 </head>
 <body>
 
 <header>
-    <!-- Muestra tu logo subido a GitHub -->
     <img src="healthbox-logo.jpeg" alt="Logo HealthBox" class="logo-img">
     <h1>HealthBox</h1>
     <p>Cuidados y orientación para el adulto mayor</p>
 </header>
 
 <main class="wrap">
-
-    <!-- INICIO / MENÚ PRINCIPAL -->
     <section id="inicio" class="screen active">
         <div class="notice">
             <b>Importante:</b> HealthBox es educativa y no sustituye la valoración profesional. No modifiques medicamentos sin indicación.
         </div>
-
         <h2>¿Qué necesitas consultar?</h2>
-
         <div class="grid">
-            <button class="card" onclick="show('diabetes')">
-                <div class="icon">🩸</div>
-                <b>Diabetes</b>
-                <p>Autocuidado</p>
-            </button>
-
-            <button class="card" onclick="show('hipertension')">
-                <div class="icon">❤️</div>
-                <b>Hipertensión</b>
-                <p>Presión arterial</p>
-            </button>
-
-            <button class="card" onclick="show('hipotension')">
-                <div class="icon">💧</div>
-                <b>Hipotensión</b>
-                <p>Mareos y cuidados</p>
-            </button>
-
-            <button class="card" onclick="show('tiroides')">
-                <div class="icon">🦋</div>
-                <b>Tiroides</b>
-                <p>Seguimiento</p>
-            </button>
-
-            <button class="card" onclick="show('alimentacion')">
-                <div class="icon">🥗</div>
-                <b>Alimentación</b>
-                <p>Hábitos saludables</p>
-            </button>
-
-            <button class="card" onclick="show('medicamentos')">
-                <div class="icon">💊</div>
-                <b>Medicamentos</b>
-                <p>Recordatorios</p>
-            </button>
-
-            <button class="card" onclick="show('registros')">
-                <div class="icon">📋</div>
-                <b>Mis registros</b>
-                <p>Glucosa y presión</p>
-            </button>
-
-            <button class="card" onclick="show('alarmas')">
-                <div class="icon">🚨</div>
-                <b>Señales de alarma</b>
-                <p>Cuándo pedir ayuda</p>
-            </button>
+            <button class="card" onclick="show('diabetes')"><div class="icon">🩸</div><b>Diabetes</b><p>Autocuidado</p></button>
+            <button class="card" onclick="show('hipertension')"><div class="icon">❤️</div><b>Hipertensión</b><p>Presión arterial</p></button>
+            <button class="card" onclick="show('hipotension')"><div class="icon">💧</div><b>Hipotensión</b><p>Mareos y cuidados</p></button>
+            <button class="card" onclick="show('tiroides')"><div class="icon">🦋</div><b>Tiroides</b><p>Seguimiento</p></button>
+            <button class="card" onclick="show('alimentacion')"><div class="icon">🥗</div><b>Alimentación</b><p>Hábitos saludables</p></button>
+            <button class="card" onclick="show('medicamentos')"><div class="icon">💊</div><b>Medicamentos</b><p>Recordatorios</p></button>
+            <button class="card" onclick="show('registros')"><div class="icon">📋</div><b>Mis registros</b><p>Glucosa y presión</p></button>
+            <button class="card" onclick="show('alarmas')"><div class="icon">🚨</div><b>Señales de alarma</b><p>Cuándo pedir ayuda</p></button>
         </div>
     </section>
 
-    <!-- SECCIÓN DIABETES -->
     <section id="diabetes" class="screen">
         <button class="back" onclick="show('inicio')">← Regresar</button>
         <div class="box">
             <h2>🩸 Diabetes mellitus</h2>
             <p>El autocuidado ayuda a controlar la enfermedad y prevenir complicaciones.</p>
-
             <h3>🍎 Alimentación</h3>
-            <ul>
-                <li>Preferir alimentos variados y poco procesados.</li>
-                <li>Consumir verduras, frutas y leguminosas.</li>
-                <li>Limitar alimentos y bebidas con exceso de azúcar.</li>
-            </ul>
-
+            <ul><li>Preferir alimentos variados y poco procesados.</li><li>Consumir verduras, frutas y leguminosas.</li><li>Limitar alimentos y bebidas con exceso de azúcar.</li></ul>
             <h3>🩸 Glucosa</h3>
-            <ul>
-                <li>Medir según indicaciones profesionales.</li>
-                <li>Registrar los resultados.</li>
-                <li>Llevarlos a las consultas.</li>
-            </ul>
-
+            <ul><li>Medir según indicaciones profesionales.</li><li>Registrar los resultados.</li><li>Llevarlos a las consultas.</li></ul>
             <h3>🦶 Pies</h3>
-            <ul>
-                <li>Revisarlos diariamente.</li>
-                <li>Mantenerlos limpios y secos.</li>
-                <li>Consultar ante lesiones que no mejoran.</li>
-            </ul>
+            <ul><li>Revisarlos diariamente.</li><li>Mantenerlos limpios y secos.</li><li>Consultar ante lesiones que no mejoran.</li></ul>
         </div>
     </section>
 
-    <!-- SECCIÓN HIPERTENSIÓN -->
     <section id="hipertension" class="screen">
         <button class="back" onclick="show('inicio')">← Regresar</button>
         <div class="box">
             <h2>❤️ Hipertensión</h2>
-
             <h3>🩺 Control</h3>
-            <ul>
-                <li>Medir la presión según indicaciones.</li>
-                <li>Registrar resultados.</li>
-                <li>Acudir a seguimiento.</li>
-            </ul>
-
+            <ul><li>Medir la presión según indicaciones.</li><li>Registrar resultados.</li><li>Acudir a seguimiento.</li></ul>
             <h3>🥗 Hábitos</h3>
-            <ul>
-                <li>Preferir alimentos frescos.</li>
-                <li>Evitar exceso de sal y ultraprocesados.</li>
-                <li>Realizar actividad física según indicación profesional.</li>
-            </ul>
-
+            <ul><li>Preferir alimentos frescos.</li><li>Evitar exceso de sal y ultraprocesados.</li><li>Realizar actividad física según indicación profesional.</li></ul>
             <h3>💊 Medicamentos</h3>
             <p>Tomarlos como fueron indicados. No suspender ni modificar dosis por cuenta propia.</p>
         </div>
     </section>
 
-    <!-- SECCIÓN HIPOTENSIÓN -->
     <section id="hipotension" class="screen">
         <button class="back" onclick="show('inicio')">← Regresar</button>
         <div class="box">
             <h2>💧 Hipotensión</h2>
-
             <h3>Si aparece mareo</h3>
-            <ul>
-                <li>Sentarse o recostarse para evitar caídas.</li>
-                <li>Levantarse lentamente.</li>
-                <li>Registrar la presión si se dispone de equipo.</li>
-                <li>Comentar episodios recurrentes con un profesional.</li>
-            </ul>
-
-            <div class="warning">
-                No aumentar por cuenta propia sal, líquidos o medicamentos.
-            </div>
+            <ul><li>Sentarse o recostarse para evitar caídas.</li><li>Levantarse lentamente.</li><li>Registrar la presión si se dispone de equipo.</li><li>Comentar episodios recurrentes con un profesional.</li></ul>
+            <div class="warning">No aumentar por cuenta propia sal, líquidos o medicamentos.</div>
         </div>
     </section>
 
-    <!-- SECCIÓN TIROIDES -->
     <section id="tiroides" class="screen">
         <button class="back" onclick="show('inicio')">← Regresar</button>
         <div class="box">
             <h2>🦋 Tiroides</h2>
-
-            <h3>💊 Tratamiento</h3>
-            <p>Tomar el tratamiento exactamente como fue indicado.</p>
-
-            <h3>🧪 Estudios</h3>
-            <p>Acudir a los análisis y consultas indicados.</p>
-
-            <h3>📋 Seguimiento</h3>
-            <p>Registrar cambios importantes y comentarlos en consulta.</p>
+            <h3>💊 Tratamiento</h3><p>Tomar el tratamiento exactamente como fue indicado.</p>
+            <h3>🧪 Estudios</h3><p>Acudir a los análisis y consultas indicados.</p>
+            <h3>📋 Seguimiento</h3><p>Registrar cambios importantes y comentarlos en consulta.</p>
         </div>
     </section>
 
-    <!-- SECCIÓN ALIMENTACIÓN -->
     <section id="alimentacion" class="screen">
         <button class="back" onclick="show('inicio')">← Regresar</button>
         <div class="box">
             <h2>🥗 Alimentación saludable</h2>
             <p>Una alimentación equilibrada puede favorecer el bienestar general.</p>
-
-            <h3>Preferir</h3>
-            <ul>
-                <li>Verduras y frutas.</li>
-                <li>Leguminosas.</li>
-                <li>Cereales integrales.</li>
-                <li>Fuentes de proteína.</li>
-                <li>Agua simple.</li>
-            </ul>
-
-            <h3>Limitar</h3>
-            <ul>
-                <li>Exceso de azúcar.</li>
-                <li>Exceso de sal.</li>
-                <li>Alimentos ultraprocesados.</li>
-                <li>Bebidas azucaradas.</li>
-            </ul>
+            <h3>Preferir</h3><ul><li>Verduras y frutas.</li><li>Leguminosas.</li><li>Cereales integrales.</li><li>Fuentes de proteína.</li><li>Agua simple.</li></ul>
+            <h3>Limitar</h3><ul><li>Exceso de azúcar.</li><li>Exceso de sal.</li><li>Alimentos ultraprocesados.</li><li>Bebidas azucaradas.</li></ul>
         </div>
     </section>
 
-    <!-- SECCIÓN MEDICAMENTOS -->
     <section id="medicamentos" class="screen">
         <button class="back" onclick="show('inicio')">← Regresar</button>
         <div class="box">
             <h2>💊 Recordatorios</h2>
-
-            <label>Medicamento</label>
-            <input id="mn" placeholder="Nombre del medicamento">
-
-            <label>Horario</label>
-            <input id="mh" type="time">
-
+            <label>Medicamento</label><input id="mn" placeholder="Nombre del medicamento">
+            <label>Horario</label><input id="mh" type="time">
             <button class="save" onclick="addMed()">Guardar medicamento</button>
-
             <div id="meds"></div>
         </div>
     </section>
 
-    <!-- SECCIÓN MIS REGISTROS -->
     <section id="registros" class="screen">
         <button class="back" onclick="show('inicio')">← Regresar</button>
         <div class="box">
             <h2>📋 Mis registros</h2>
-
             <label>Tipo de registro</label>
-            <select id="rt">
-                <option>Presión arterial</option>
-                <option>Glucosa</option>
-            </select>
-
-            <label>Valor</label>
-            <input id="rv" placeholder="Ej. 120/80 o 110 mg/dL">
-
+            <select id="rt"><option>Presión arterial</option><option>Glucosa</option></select>
+            <label>Valor</label><input id="rv" placeholder="Ej. 120/80 o 110 mg/dL">
             <button class="save" onclick="addRec()">Guardar registro</button>
-
             <div id="recs"></div>
         </div>
     </section>
 
-    <!-- SECCIÓN SEÑALES DE ALARMA -->
     <section id="alarmas" class="screen">
         <button class="back" onclick="show('inicio')">← Regresar</button>
         <div class="box">
             <h2>🚨 Señales de alarma</h2>
-
-            <ul>
-                <li>Dolor o presión intensa en el pecho.</li>
-                <li>Dificultad importante para respirar.</li>
-                <li>Desmayo.</li>
-                <li>Debilidad repentina de un lado del cuerpo.</li>
-                <li>Dificultad repentina para hablar.</li>
-                <li>Confusión repentina.</li>
-                <li>Empeoramiento rápido.</li>
-            </ul>
-
-            <div class="warning">
-                <b>Emergencia:</b> Solicita atención médica de inmediato ante una situación grave.
-            </div>
+            <ul><li>Dolor o presión intensa en el pecho.</li><li>Dificultad importante para respirar.</li><li>Desmayo.</li><li>Debilidad repentina de un lado del cuerpo.</li><li>Dificultad repentina para hablar.</li><li>Confusión repentina.</li><li>Empeoramiento rápido.</li></ul>
+            <div class="warning"><b>Emergencia:</b> Solicita atención médica de inmediato ante una situación grave.</div>
         </div>
     </section>
-
 </main>
 
-<footer>
-    HealthBox © — Herramienta educativa para apoyar el autocuidado.
-</footer>
+<footer>HealthBox © — Herramienta educativa para apoyar el autocuidado.</footer>
 
 <script>
     function show(id) {
@@ -471,79 +162,49 @@
         document.getElementById(id).classList.add('active');
         window.scrollTo(0, 0);
     }
-
-    /* Guardar Medicamentos */
     function addMed() {
         let n = document.getElementById('mn').value.trim();
         let h = document.getElementById('mh').value;
         if (!n || !h) return alert('Completa el nombre y horario.');
-        
         let a = JSON.parse(localStorage.hbm || '[]');
         a.push({ n, h });
         localStorage.hbm = JSON.stringify(a);
-        
         document.getElementById('mn').value = '';
         document.getElementById('mh').value = '';
         renderM();
     }
-
     function renderM() {
         let a = JSON.parse(localStorage.hbm || '[]');
         let container = document.getElementById('meds');
         container.innerHTML = a.length ? a.map((x, i) => `
-            <div class="record">
-                💊 <b>${x.n}</b><br>
-                ⏰ ${x.h}<br>
-                <button class="delete" onclick="delM(${i})">Eliminar</button>
-            </div>
+            <div class="record">💊 <b>${x.n}</b><br>⏰ ${x.h}<br><button class="delete" onclick="delM(${i})">Eliminar</button></div>
         `).join('') : '<p style="margin-top:10px; color:#777;">No hay recordatorios guardados.</p>';
     }
-
     function delM(i) {
         let a = JSON.parse(localStorage.hbm || '[]');
         a.splice(i, 1);
         localStorage.hbm = JSON.stringify(a);
         renderM();
     }
-
-    /* Guardar Registros de Salud */
     function addRec() {
         let t = document.getElementById('rt').value;
         let v = document.getElementById('rv').value.trim();
         if (!v) return alert('Escribe un valor.');
-
         let a = JSON.parse(localStorage.hbr || '[]');
         a.push({ t, v, d: new Date().toLocaleString('es-MX') });
         localStorage.hbr = JSON.stringify(a);
-
         document.getElementById('rv').value = '';
         renderR();
     }
-
     function renderR() {
         let a = JSON.parse(localStorage.hbr || '[]');
         let container = document.getElementById('recs');
         container.innerHTML = a.length ? a.slice().reverse().map(x => `
-            <div class="record">
-                <b>${x.t}</b><br>
-                📊 ${x.v}<br>
-                📅 <small>${x.d}</small>
-            </div>
+            <div class="record"><b>${x.t}</b><br>📊 ${x.v}<br>📅 <small>${x.d}</small></div>
         `).join('') : '<p style="margin-top:10px; color:#777;">No hay registros guardados.</p>';
     }
-
-    /* Cargar datos guardados al iniciar */
     renderM();
     renderR();
-
-    /* Registrar Service Worker */
-    if ("serviceWorker" in navigator) {
-        window.addEventListener("load", function() {
-            navigator.serviceWorker.register("service-worker.js").catch(function(err) {
-                console.log("Error de SW:", err);
-            });
-        });
-    }
 </script>
 
 </body>
