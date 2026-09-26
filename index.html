@@ -1,94 +1,182 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#2f8f78">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icon-192.png">
 <title>HealthBox</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+    box-sizing:border-box;
+}
+
 body{
-font-family:Arial,sans-serif;
-margin:0;
-background:#f4f8fb;
-color:#17324d
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#f2f8f6;
+    color:#234;
 }
+
 header{
-background:#fff;
-padding:20px;
-text-align:center;
-border-bottom:1px solid #dce7ef
+    background:white;
+    text-align:center;
+    padding:22px 15px;
+    border-bottom:1px solid #dce9e5;
 }
+
 header img{
-width:150px;
-max-width:55%;
-border-radius:24px
+    width:125px;
+    height:125px;
+    object-fit:contain;
+    border-radius:25px;
 }
+
 header h1{
-margin:10px 0 5px;
-color:#2f8f78
+    margin:10px 0 5px;
+    color:#2f8f78;
+    font-size:30px;
 }
+
 header p{
-margin:0;
-color:#607487
+    margin:0;
+    color:#667;
 }
+
 main{
-max-width:720px;
-margin:auto;
-padding:18px
+    max-width:850px;
+    margin:auto;
+    padding:18px;
 }
-.card{
-background:#fff;
-border-radius:16px;
-padding:18px;
-margin:14px 0;
-box-shadow:0 2px 12px #00000012
-}
+
 .menu{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:12px
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    margin-bottom:18px;
 }
+
 .menu button{
-width:100%;
-min-height:70px
+    background:white;
+    border:2px solid #dce9e5;
+    border-radius:15px;
+    padding:15px 8px;
+    font-size:15px;
+    color:#234;
+    cursor:pointer;
 }
-button{
-background:#2f8f78;
-color:#fff;
-border:0;
-border-radius:10px;
-padding:12px 16px;
-font-size:16px;
-cursor:pointer
+
+.menu button:hover{
+    border-color:#2f8f78;
 }
-button:hover{
-opacity:.9
-}
+
 .seccion{
-display:none
+    display:none;
+    background:white;
+    padding:20px;
+    border-radius:18px;
+    margin-bottom:18px;
+    box-shadow:0 3px 12px rgba(0,0,0,.07);
 }
+
 .seccion.activa{
-display:block
+    display:block;
 }
-input{
-display:block;
-width:100%;
-padding:11px;
-margin:6px 0 14px;
-border:1px solid #bbcbd7;
-border-radius:8px
+
+h2{
+    color:#2f8f78;
+    margin-top:0;
 }
-.volver{
-background:#607487;
-margin-bottom:12px
+
+h3{
+    color:#376f63;
 }
-.small{
-font-size:13px;
-color:#607487
+
+label{
+    display:block;
+    margin-top:12px;
+    font-weight:bold;
+}
+
+input, select, textarea{
+    width:100%;
+    padding:11px;
+    margin-top:6px;
+    border:1px solid #bdcfca;
+    border-radius:9px;
+    font-size:15px;
+}
+
+textarea{
+    min-height:80px;
+    resize:vertical;
+}
+
+.btn{
+    margin-top:15px;
+    background:#2f8f78;
+    color:white;
+    border:none;
+    border-radius:10px;
+    padding:12px 17px;
+    font-size:15px;
+    cursor:pointer;
+}
+
+.btn-secundario{
+    background:#e7f2ef;
+    color:#2f6f60;
+}
+
+.resultado{
+    background:#f1f8f5;
+    border-left:4px solid #2f8f78;
+    padding:12px;
+    margin-top:15px;
+    border-radius:8px;
+}
+
+.registro{
+    background:#f8fbfa;
+    border:1px solid #dce9e5;
+    padding:12px;
+    margin-top:10px;
+    border-radius:10px;
+}
+
+.alerta{
+    background:#fff4df;
+    border-left:4px solid #e6a23c;
+    padding:12px;
+    border-radius:8px;
+    margin:10px 0;
+}
+
+.peligro{
+    background:#fff0f0;
+    border-left:4px solid #d9534f;
+    padding:12px;
+    border-radius:8px;
+    margin:10px 0;
+}
+
+ul{
+    line-height:1.7;
+}
+
+footer{
+    text-align:center;
+    color:#71817c;
+    font-size:13px;
+    padding:20px;
+}
+
+@media(max-width:500px){
+    .menu{
+        grid-template-columns:1fr;
+    }
 }
 </style>
 </head>
@@ -96,214 +184,522 @@ color:#607487
 <body>
 
 <header>
-<img src="HealthBox-logo.jpeg" alt="Logo de HealthBox">
-<h1>HealthBox</h1>
-<p>Salud y cuidado en cada etapa</p>
+    <img src="HealthBox-logo.jpeg" alt="Logo de HealthBox">
+    <h1>HealthBox</h1>
+    <p>Salud y cuidado del adulto mayor</p>
 </header>
 
 <main>
 
-<section id="inicio" class="seccion activa">
-<div class="card">
-<h2>Bienvenido a HealthBox 💚</h2>
-<p>Herramienta de apoyo para el autocuidado y la orientación en salud.</p>
-
 <div class="menu">
-<button onclick="mostrarSeccion('datos')">🩺 Datos de salud</button>
-<button onclick="mostrarSeccion('diabetes')">🩸 Diabetes</button>
-<button onclick="mostrarSeccion('hipertension')">❤️ Hipertensión</button>
-<button onclick="mostrarSeccion('hipotension')">💙 Hipotensión</button>
-<button onclick="mostrarSeccion('tiroides')">🦋 Tiroides</button>
-<button onclick="mostrarSeccion('alimentacion')">🥗 Alimentación</button>
-<button onclick="mostrarSeccion('cuidados')">👵 Cuidados del adulto mayor</button>
-<button onclick="mostrarSeccion('alarma')">🚨 Signos de alarma</button>
+    <button onclick="mostrar('inicio')">🏠 Inicio</button>
+    <button onclick="mostrar('medicamentos')">💊 Medicamentos</button>
+    <button onclick="mostrar('presion')">🩺 Presión arterial</button>
+    <button onclick="mostrar('glucosa')">🩸 Glucosa</button>
+    <button onclick="mostrar('historial')">📋 Historial</button>
+    <button onclick="mostrar('enfermedades')">❤️ Enfermedades</button>
+    <button onclick="mostrar('alimentacion')">🍎 Alimentación</button>
+    <button onclick="mostrar('cuidados')">👵 Cuidados</button>
+    <button onclick="mostrar('alarma')">⚠️ Signos de alarma</button>
 </div>
-</div>
+
+<!-- INICIO -->
+<section id="inicio" class="seccion activa">
+    <h2>Bienvenido a HealthBox 💚</h2>
+
+    <p>
+        HealthBox es una herramienta de apoyo para el autocuidado y
+        seguimiento de la salud del adulto mayor.
+    </p>
+
+    <h3>¿Qué puedes hacer?</h3>
+
+    <ul>
+        <li>Registrar presión arterial.</li>
+        <li>Registrar niveles de glucosa.</li>
+        <li>Consultar el historial de registros.</li>
+        <li>Registrar medicamentos y horarios.</li>
+        <li>Consultar información sobre enfermedades frecuentes.</li>
+        <li>Conocer recomendaciones de alimentación.</li>
+        <li>Consultar cuidados para el adulto mayor.</li>
+        <li>Identificar signos de alarma.</li>
+    </ul>
+
+    <div class="alerta">
+        <strong>Importante:</strong> HealthBox es una herramienta de apoyo
+        y no sustituye la valoración de un profesional de la salud.
+    </div>
 </section>
 
-<section id="datos" class="seccion">
-<div class="card">
-<button class="volver" onclick="mostrarSeccion('inicio')">← Volver</button>
-<h2>🩺 Datos de salud</h2>
+<!-- MEDICAMENTOS -->
+<section id="medicamentos" class="seccion">
+    <h2>💊 Recordatorio de medicamentos</h2>
 
-<label>Presión arterial</label>
-<input id="presion" placeholder="Ej. 120/80">
+    <label>Nombre del medicamento</label>
+    <input id="medNombre" type="text" placeholder="Ej. Medicamento">
 
-<label>Frecuencia cardiaca</label>
-<input id="fc" type="number" placeholder="Ej. 72">
+    <label>Hora</label>
+    <input id="medHora" type="time">
 
-<label>Glucosa</label>
-<input id="glucosa" type="number" placeholder="Ej. 100">
+    <label>Indicaciones</label>
+    <input id="medIndicaciones" type="text"
+           placeholder="Ej. Tomar después de alimentos">
 
-<button onclick="guardar()">Guardar datos</button>
-<p id="mensaje"></p>
+    <button class="btn" onclick="guardarMedicamento()">
+        Guardar medicamento
+    </button>
 
-<hr>
-
-<h3>Últimos datos</h3>
-<p id="datosGuardados">Aún no hay datos guardados.</p>
-</div>
+    <div id="listaMedicamentos"></div>
 </section>
 
-<section id="diabetes" class="seccion">
-<div class="card">
-<button class="volver" onclick="mostrarSeccion('inicio')">← Volver</button>
-<h2>🩸 Diabetes</h2>
-<p>Información general para el autocuidado de personas con diabetes.</p>
-<ul>
-<li>Vigilar la glucosa según las indicaciones del profesional de salud.</li>
-<li>Mantener una alimentación equilibrada.</li>
-<li>Realizar actividad física de acuerdo con las condiciones de salud.</li>
-<li>Revisar los pies diariamente.</li>
-</ul>
-</div>
+<!-- PRESION -->
+<section id="presion" class="seccion">
+    <h2>🩺 Presión arterial</h2>
+
+    <label>Presión sistólica</label>
+    <input id="sistolica" type="number" placeholder="Ej. 120">
+
+    <label>Presión diastólica</label>
+    <input id="diastolica" type="number" placeholder="Ej. 80">
+
+    <label>Frecuencia cardiaca</label>
+    <input id="frecuencia" type="number" placeholder="Ej. 72">
+
+    <button class="btn" onclick="guardarPresion()">
+        Guardar registro
+    </button>
+
+    <div id="resultadoPresion"></div>
 </section>
 
-<section id="hipertension" class="seccion">
-<div class="card">
-<button class="volver" onclick="mostrarSeccion('inicio')">← Volver</button>
-<h2>❤️ Hipertensión</h2>
-<p>La presión arterial debe vigilarse de manera periódica.</p>
-<ul>
-<li>Medir la presión correctamente.</li>
-<li>Seguir el tratamiento indicado.</li>
-<li>Reducir el consumo excesivo de sal.</li>
-<li>Acudir a valoración cuando existan síntomas de alarma.</li>
-</ul>
-</div>
+<!-- GLUCOSA -->
+<section id="glucosa" class="seccion">
+    <h2>🩸 Registro de glucosa</h2>
+
+    <label>Glucosa (mg/dL)</label>
+    <input id="valorGlucosa" type="number" placeholder="Ej. 100">
+
+    <label>Momento de la medición</label>
+    <select id="momentoGlucosa">
+        <option value="Ayuno">Ayuno</option>
+        <option value="Antes de comer">Antes de comer</option>
+        <option value="Después de comer">Después de comer</option>
+        <option value="Otro">Otro</option>
+    </select>
+
+    <button class="btn" onclick="guardarGlucosa()">
+        Guardar glucosa
+    </button>
+
+    <div id="resultadoGlucosa"></div>
 </section>
 
-<section id="hipotension" class="seccion">
-<div class="card">
-<button class="volver" onclick="mostrarSeccion('inicio')">← Volver</button>
-<h2>💙 Hipotensión</h2>
-<p>La presión arterial baja puede acompañarse de mareo o debilidad.</p>
-<ul>
-<li>Sentarse o recostarse si aparece mareo.</li>
-<li>Evitar levantarse bruscamente.</li>
-<li>Registrar los valores de presión.</li>
-<li>Buscar valoración profesional si los síntomas son importantes o persistentes.</li>
-</ul>
-</div>
+<!-- HISTORIAL -->
+<section id="historial" class="seccion">
+    <h2>📋 Historial de salud</h2>
+
+    <h3>Presión arterial</h3>
+    <div id="historialPresion"></div>
+
+    <h3>Glucosa</h3>
+    <div id="historialGlucosa"></div>
+
+    <button class="btn btn-secundario" onclick="borrarHistorial()">
+        Borrar historial
+    </button>
 </section>
 
-<section id="tiroides" class="seccion">
-<div class="card">
-<button class="volver" onclick="mostrarSeccion('inicio')">← Volver</button>
-<h2>🦋 Tiroides</h2>
-<p>Información general sobre el cuidado relacionado con alteraciones de la tiroides.</p>
-<ul>
-<li>Tomar los medicamentos exactamente como fueron indicados.</li>
-<li>Acudir a los controles correspondientes.</li>
-<li>Informar al profesional de salud sobre cambios en los síntomas.</li>
-</ul>
-</div>
+<!-- ENFERMEDADES -->
+<section id="enfermedades" class="seccion">
+    <h2>❤️ Enfermedades frecuentes</h2>
+
+    <h3>Diabetes mellitus</h3>
+    <p>
+        Es una enfermedad en la que existe una alteración en el control
+        de la glucosa en sangre. El seguimiento de la alimentación,
+        actividad física, medicamentos y glucosa puede formar parte del
+        autocuidado.
+    </p>
+
+    <h3>Hipertensión arterial</h3>
+    <p>
+        Se caracteriza por cifras elevadas de presión arterial.
+        El control periódico de la presión, alimentación saludable,
+        actividad física y seguimiento médico son importantes.
+    </p>
+
+    <h3>Hipotensión</h3>
+    <p>
+        Puede presentarse cuando la presión arterial disminuye y puede
+        acompañarse de mareo o debilidad. Si existen síntomas importantes,
+        se debe buscar valoración profesional.
+    </p>
+
+    <h3>Alteraciones de la tiroides</h3>
+    <p>
+        Los problemas tiroideos pueden afectar diferentes funciones
+        del organismo y requieren seguimiento médico y cumplimiento
+        adecuado del tratamiento indicado.
+    </p>
 </section>
 
+<!-- ALIMENTACION -->
 <section id="alimentacion" class="seccion">
-<div class="card">
-<button class="volver" onclick="mostrarSeccion('inicio')">← Volver</button>
-<h2>🥗 Alimentación</h2>
-<p>Una alimentación equilibrada puede contribuir al cuidado de la salud.</p>
-<ul>
-<li>Preferir frutas y verduras.</li>
-<li>Mantener una adecuada hidratación.</li>
-<li>Elegir alimentos variados.</li>
-<li>Adaptar la alimentación a las necesidades individuales.</li>
-</ul>
-</div>
+    <h2>🍎 Alimentación saludable</h2>
+
+    <ul>
+        <li>Preferir una alimentación variada y equilibrada.</li>
+        <li>Consumir frutas y verduras de manera regular.</li>
+        <li>Preferir alimentos con fibra.</li>
+        <li>Moderar el consumo de sal.</li>
+        <li>Limitar el exceso de azúcares añadidos.</li>
+        <li>Mantener una hidratación adecuada según las indicaciones médicas.</li>
+        <li>Adaptar la alimentación a las enfermedades y necesidades individuales.</li>
+    </ul>
+
+    <div class="alerta">
+        Las necesidades de alimentación pueden cambiar dependiendo
+        de las enfermedades, medicamentos y condiciones de cada persona.
+    </div>
 </section>
 
+<!-- CUIDADOS -->
 <section id="cuidados" class="seccion">
-<div class="card">
-<button class="volver" onclick="mostrarSeccion('inicio')">← Volver</button>
-<h2>👵 Cuidados del adulto mayor</h2>
-<ul>
-<li>Prevenir caídas.</li>
-<li>Mantener una adecuada hidratación.</li>
-<li>Favorecer la movilidad segura.</li>
-<li>Vigilar cambios en el estado de salud.</li>
-<li>Promover la participación familiar y social.</li>
-</ul>
-</div>
+    <h2>👵 Cuidados del adulto mayor</h2>
+
+    <ul>
+        <li>Mantener los medicamentos organizados.</li>
+        <li>Registrar periódicamente los signos vitales indicados.</li>
+        <li>Mantener una alimentación adecuada.</li>
+        <li>Favorecer la hidratación cuando no exista contraindicación médica.</li>
+        <li>Mantener actividad física acorde con las capacidades de la persona.</li>
+        <li>Prevenir caídas manteniendo espacios seguros.</li>
+        <li>Acudir a revisiones médicas.</li>
+        <li>Mantener comunicación con familiares o cuidadores.</li>
+    </ul>
 </section>
 
+<!-- SIGNOS DE ALARMA -->
 <section id="alarma" class="seccion">
-<div class="card">
-<button class="volver" onclick="mostrarSeccion('inicio')">← Volver</button>
-<h2>🚨 Signos de alarma</h2>
-<p>Busca atención médica ante situaciones como:</p>
-<ul>
-<li>Dificultad importante para respirar.</li>
-<li>Dolor intenso o repentino.</li>
-<li>Pérdida repentina del conocimiento.</li>
-<li>Confusión o cambios neurológicos repentinos.</li>
-<li>Empeoramiento rápido del estado general.</li>
-</ul>
-</div>
-</section>
+    <h2>⚠️ Signos de alarma</h2>
 
-<p class="small">
-HealthBox es una herramienta de apoyo y no sustituye la valoración de un profesional de la salud.
-</p>
+    <div class="peligro">
+        <strong>Busca atención médica inmediata</strong> ante situaciones
+        como dificultad importante para respirar, dolor intenso en el pecho,
+        pérdida repentina del conocimiento, convulsiones o cambios súbitos
+        importantes en el estado de salud.
+    </div>
+
+    <h3>Posibles signos de accidente cerebrovascular</h3>
+
+    <ul>
+        <li>Debilidad o pérdida súbita de fuerza en un lado del cuerpo.</li>
+        <li>Alteraciones repentinas del habla.</li>
+        <li>Alteraciones repentinas de la visión.</li>
+        <li>Pérdida repentina del equilibrio o coordinación.</li>
+        <li>Dolor de cabeza súbito e intenso.</li>
+    </ul>
+
+    <div class="alerta">
+        Ante signos de alarma, no depender únicamente de la aplicación.
+        Es necesario solicitar atención médica.
+    </div>
+</section>
 
 </main>
 
+<footer>
+    HealthBox 💚 — Herramienta de apoyo para el autocuidado.
+</footer>
+
 <script>
 
-function mostrarSeccion(id){
-document.querySelectorAll('.seccion').forEach(function(seccion){
-seccion.classList.remove('activa');
-});
-document.getElementById(id).classList.add('activa');
-window.scrollTo(0,0);
+function mostrar(id){
+
+    const secciones = document.querySelectorAll(".seccion");
+
+    secciones.forEach(function(seccion){
+        seccion.classList.remove("activa");
+    });
+
+    document.getElementById(id).classList.add("activa");
+
+    if(id === "medicamentos"){
+        mostrarMedicamentos();
+    }
+
+    if(id === "historial"){
+        mostrarHistorial();
+    }
 }
 
-function guardar(){
 
-const d={
-presion:document.getElementById('presion').value,
-fc:document.getElementById('fc').value,
-glucosa:document.getElementById('glucosa').value
-};
+/* ---------------- MEDICAMENTOS ---------------- */
 
-localStorage.setItem('healthboxDatos',JSON.stringify(d));
+function guardarMedicamento(){
 
-mostrar();
+    const nombre = document.getElementById("medNombre").value;
+    const hora = document.getElementById("medHora").value;
+    const indicaciones =
+        document.getElementById("medIndicaciones").value;
 
-document.getElementById('mensaje').textContent=
-'Datos guardados en este dispositivo.';
+    if(!nombre || !hora){
+        alert("Completa el nombre y la hora del medicamento.");
+        return;
+    }
 
+    let medicamentos =
+        JSON.parse(localStorage.getItem("healthboxMedicamentos") || "[]");
+
+    medicamentos.push({
+        nombre:nombre,
+        hora:hora,
+        indicaciones:indicaciones
+    });
+
+    localStorage.setItem(
+        "healthboxMedicamentos",
+        JSON.stringify(medicamentos)
+    );
+
+    document.getElementById("medNombre").value="";
+    document.getElementById("medHora").value="";
+    document.getElementById("medIndicaciones").value="";
+
+    mostrarMedicamentos();
 }
 
-function mostrar(){
+function mostrarMedicamentos(){
 
-const d=JSON.parse(
-localStorage.getItem('healthboxDatos')||'null'
-);
+    const contenedor =
+        document.getElementById("listaMedicamentos");
 
-if(d){
+    let medicamentos =
+        JSON.parse(localStorage.getItem("healthboxMedicamentos") || "[]");
 
-document.getElementById('datosGuardados').textContent=
-'Presión: '+(d.presion||'—')+
-' | FC: '+(d.fc||'—')+
-' lpm | Glucosa: '+(d.glucosa||'—')+
-' mg/dL';
+    if(medicamentos.length === 0){
+        contenedor.innerHTML =
+            "<p>Aún no hay medicamentos registrados.</p>";
+        return;
+    }
 
+    contenedor.innerHTML="";
+
+    medicamentos.forEach(function(med, index){
+
+        contenedor.innerHTML += `
+            <div class="registro">
+                <strong>${med.nombre}</strong><br>
+                ⏰ ${med.hora}<br>
+                ${med.indicaciones || "Sin indicaciones adicionales"}
+                <br>
+                <button class="btn btn-secundario"
+                    onclick="eliminarMedicamento(${index})">
+                    Eliminar
+                </button>
+            </div>
+        `;
+    });
 }
 
+function eliminarMedicamento(index){
+
+    let medicamentos =
+        JSON.parse(localStorage.getItem("healthboxMedicamentos") || "[]");
+
+    medicamentos.splice(index,1);
+
+    localStorage.setItem(
+        "healthboxMedicamentos",
+        JSON.stringify(medicamentos)
+    );
+
+    mostrarMedicamentos();
 }
 
-if('serviceWorker' in navigator){
 
-navigator.serviceWorker.register('service-worker.js');
+/* ---------------- PRESIÓN ---------------- */
 
+function guardarPresion(){
+
+    const sistolica =
+        document.getElementById("sistolica").value;
+
+    const diastolica =
+        document.getElementById("diastolica").value;
+
+    const frecuencia =
+        document.getElementById("frecuencia").value;
+
+    if(!sistolica || !diastolica){
+        alert("Ingresa la presión arterial.");
+        return;
+    }
+
+    let registros =
+        JSON.parse(localStorage.getItem("healthboxPresion") || "[]");
+
+    registros.push({
+        sistolica:sistolica,
+        diastolica:diastolica,
+        frecuencia:frecuencia,
+        fecha:new Date().toLocaleString("es-MX")
+    });
+
+    localStorage.setItem(
+        "healthboxPresion",
+        JSON.stringify(registros)
+    );
+
+    document.getElementById("resultadoPresion").innerHTML =
+        `<div class="resultado">
+            Último registro:
+            <strong>${sistolica}/${diastolica} mmHg</strong>
+            ${frecuencia ? " | FC: "+frecuencia+" lpm" : ""}
+        </div>`;
+
+    document.getElementById("sistolica").value="";
+    document.getElementById("diastolica").value="";
+    document.getElementById("frecuencia").value="";
 }
 
-mostrar();
+
+/* ---------------- GLUCOSA ---------------- */
+
+function guardarGlucosa(){
+
+    const valor =
+        document.getElementById("valorGlucosa").value;
+
+    const momento =
+        document.getElementById("momentoGlucosa").value;
+
+    if(!valor){
+        alert("Ingresa el valor de glucosa.");
+        return;
+    }
+
+    let registros =
+        JSON.parse(localStorage.getItem("healthboxGlucosa") || "[]");
+
+    registros.push({
+        valor:valor,
+        momento:momento,
+        fecha:new Date().toLocaleString("es-MX")
+    });
+
+    localStorage.setItem(
+        "healthboxGlucosa",
+        JSON.stringify(registros)
+    );
+
+    document.getElementById("resultadoGlucosa").innerHTML =
+        `<div class="resultado">
+            Último registro:
+            <strong>${valor} mg/dL</strong>
+            — ${momento}
+        </div>`;
+
+    document.getElementById("valorGlucosa").value="";
+}
+
+
+/* ---------------- HISTORIAL ---------------- */
+
+function mostrarHistorial(){
+
+    const presion =
+        JSON.parse(localStorage.getItem("healthboxPresion") || "[]");
+
+    const glucosa =
+        JSON.parse(localStorage.getItem("healthboxGlucosa") || "[]");
+
+    const contPresion =
+        document.getElementById("historialPresion");
+
+    const contGlucosa =
+        document.getElementById("historialGlucosa");
+
+    if(presion.length === 0){
+
+        contPresion.innerHTML =
+            "<p>No hay registros de presión.</p>";
+
+    }else{
+
+        contPresion.innerHTML="";
+
+        presion.slice().reverse().forEach(function(r){
+
+            contPresion.innerHTML += `
+                <div class="registro">
+                    🩺 <strong>
+                    ${r.sistolica}/${r.diastolica} mmHg
+                    </strong>
+                    ${r.frecuencia ?
+                    " | FC "+r.frecuencia+" lpm" : ""}
+                    <br>
+                    <small>${r.fecha}</small>
+                </div>
+            `;
+        });
+    }
+
+    if(glucosa.length === 0){
+
+        contGlucosa.innerHTML =
+            "<p>No hay registros de glucosa.</p>";
+
+    }else{
+
+        contGlucosa.innerHTML="";
+
+        glucosa.slice().reverse().forEach(function(r){
+
+            contGlucosa.innerHTML += `
+                <div class="registro">
+                    🩸 <strong>${r.valor} mg/dL</strong>
+                    — ${r.momento}
+                    <br>
+                    <small>${r.fecha}</small>
+                </div>
+            `;
+        });
+    }
+}
+
+
+/* ---------------- BORRAR HISTORIAL ---------------- */
+
+function borrarHistorial(){
+
+    if(confirm("¿Quieres borrar el historial de presión y glucosa?")){
+
+        localStorage.removeItem("healthboxPresion");
+        localStorage.removeItem("healthboxGlucosa");
+
+        mostrarHistorial();
+
+        alert("Historial eliminado.");
+    }
+}
+
+
+/* ---------------- SERVICE WORKER ---------------- */
+
+if("serviceWorker" in navigator){
+
+    window.addEventListener("load",function(){
+
+        navigator.serviceWorker.register("service-worker.js")
+        .catch(function(error){
+            console.log("Error al registrar Service Worker:",error);
+        });
+
+    });
+}
 
 </script>
 
 </body>
-  </html>
-  
+</html>
