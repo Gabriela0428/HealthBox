@@ -7,15 +7,9 @@
   "theme_color": "#2e7d6f",
   "icons": [
     {
-      "src": "icono-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "Icono-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
+      "src": "healthbox-logo.jpeg",
+      "sizes": "192x192 512x512",
+      "type": "image/jpeg",
       "purpose": "any maskable"
     }
   ]
